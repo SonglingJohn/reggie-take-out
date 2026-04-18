@@ -1,51 +1,8 @@
-server:
-  port: 8080
-  #??get???????tomcat?header??????
-  tomcat:
-    max-http-form-post-size: 81920
 spring:
-  application:
-    name: reggie_take_out
-  datasource:
-    # MySQL 8.x ?????????
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    # ????????URL???<reggie_take_out>????????<???>?<??>???MySQL?????
-    url: jdbc:mysql://localhost:3306/reggie?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
-    username: root  # ?????MySQL???
-    password: 123456  # ?????MySQL??
-  mail:
-    host: smtp.qq.com
-    username: 3088367412@qq.com
-    password: jtcdkboffbhgdhbf
-    default-encoding: UTF-8
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-            required: true
-
-mybatis-plus:
-  configuration:
-    map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  global-config:
-    db-config:
-      id-type: ASSIGN_ID
-      logic-delete-field: is_deleted
-      logic-delete-value: 1
-      logic-not-delete-value: 0
-
-# Spug 推送平台配置
-spug:
-  template:
-    id: V4v6k85PZOrGY2gD  # 替换为步骤 2 中保存的模板 ID
-  api:
-    url: https://push.spug.cc/send  # 固定地址
-
-
-
-reggie:
-  path: E:\gitRepository\reggiePic\
-
+  profiles:
+    active: dev   # 改成 prod 就是生产环境
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
